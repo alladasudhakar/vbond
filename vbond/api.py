@@ -448,9 +448,11 @@ def fetch_discount_percentage_and_calculate_discount_amount(self, method):
 
 def get_discount_percentage_based_on_range(state, tonnage, total_amount, discount_based_on):
     vbond_settings_doc = frappe.get_doc("Vbond Settings")
+    log.debug("vbond_settings = " + str(vbond_settings_doc))
     tonnage = flt(tonnage) or 0
     total_amount = flt(total_amount) or 0
     discount_percentage = 0
+    log.debug("state = " + str(state))
     log.debug("tonnage = " + str(tonnage) + " -- total_amount = " + str(total_amount))
     log.debug("discount_based_on = " + str(discount_based_on))
     if discount_based_on == "Weight":
