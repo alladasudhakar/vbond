@@ -421,6 +421,7 @@ def fetch_discount_percentage_and_calculate_discount_amount(self, method):
             discount_percentage_based_on_weight_value = self.custom_weight_value_discount_percentage
         else:
             self.custom_weight_value_discount_percentage = discount_percentage_based_on_weight_value
+        log.debug("self.total = " + str(self.total))
         discount_amount_weight_value = self.total * (discount_percentage_based_on_weight_value / 100)
         amount_after_weight_value_discount = self.total - discount_amount_weight_value
         special_discount_amount = amount_after_weight_value_discount * ((self.custom_special_discount_percentage or 0) / 100)
