@@ -417,6 +417,7 @@ def fetch_discount_percentage_and_calculate_discount_amount(self, method):
         log.debug("self.custom_allow_overwrite = " + str(self.custom_allow_overwrite))
         ### if allow overwrite then calculate discount based manually added %
         if self.custom_allow_overwrite ==1:
+            log.debug("self.custom_allow_overwrite ==1 " + str(self.custom_weight_value_discount_percentage))
             discount_percentage_based_on_weight_value = self.custom_weight_value_discount_percentage
         else:
             self.custom_weight_value_discount_percentage = discount_percentage_based_on_weight_value
