@@ -4,6 +4,9 @@ import erpnext
 from frappe.utils import flt
 from erpnext.buying.report.item_wise_purchase_history.item_wise_purchase_history import execute 
 
+log = frappe.logger("vbond", allow_site=True)
+log.setLevel("DEBUG")
+
 # Function For Filtering Destination Based On State
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
@@ -410,6 +413,8 @@ def fetch_discount_percentage_and_calculate_discount_amount(self, method):
         tonnage = (self.total_net_weight / 1000) or 0
         total_amount = self.total
         discount_percentage_based_on_weight_value = get_discount_percentage_based_on_range(self.custom_state, tonnage, total_amount, self.custom_discount_based_on)
+        log.debug("discount_percentage_based_on_weight_value = " + str(discount_percentage_based_on_weight_value))
+        log.debug("self.custom_allow_overwrite = " + str(self.custom_allow_overwrite))
         ### if allow overwrite then calculate discount based manually added %
         if self.custom_allow_overwrite ==1:
             discount_percentage_based_on_weight_value = self.custom_weight_value_discount_percentage
