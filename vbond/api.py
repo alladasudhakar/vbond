@@ -456,8 +456,10 @@ def get_discount_percentage_based_on_range(state, tonnage, total_amount, discoun
     log.debug("tonnage = " + str(tonnage) + " -- total_amount = " + str(total_amount))
     log.debug("discount_based_on = " + str(discount_based_on))
     if discount_based_on == "Weight":
+        log.debug("discount_based_on 2 = " + str(discount_based_on))
         if state in ["Telangana", "Andhra Pradesh"]:
             if tonnage <= 11.5:
+                log.debug("at_less_then_115_mt = " + str(vbond_settings_doc.at_less_then_115_mt))
                 discount_percentage = vbond_settings_doc.at_less_then_115_mt
             elif 11.5 < tonnage <= 18:
                 discount_percentage = vbond_settings_doc.at_12_18_mt
@@ -467,6 +469,7 @@ def get_discount_percentage_based_on_range(state, tonnage, total_amount, discoun
                 discount_percentage = vbond_settings_doc.at_more_then_25_mt
         else:
             if tonnage <= 11.5:
+                log.debug("ot_less_then_115_mt = " + str(vbond_settings_doc.ot_less_then_115_mt))
                 discount_percentage = vbond_settings_doc.ot_less_then_115_mt
             elif 11.5 < tonnage <= 18:
                 discount_percentage = vbond_settings_doc.ot_12_18_mt
@@ -484,5 +487,6 @@ def get_discount_percentage_based_on_range(state, tonnage, total_amount, discoun
             discount_percentage = vbond_settings_doc.v_25_35_lacs
         elif total_amount > 350000:
             discount_percentage = vbond_settings_doc.v_more_then_35_lacs
+
     log.debug("discount_percentage = " + str(discount_percentage))
     return discount_percentage
