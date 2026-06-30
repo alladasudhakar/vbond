@@ -482,5 +482,5 @@ def get_discount_percentage_based_on_range(state, tonnage, total_amount, discoun
             discount_percentage = vbond_settings_doc.v_25_35_lacs
         elif total_amount > 350000:
             discount_percentage = vbond_settings_doc.v_more_then_35_lacs
-
+    log.debug("discount_percentage = " + str(discount_percentage))
     return discount_percentage
