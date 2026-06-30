@@ -451,6 +451,8 @@ def get_discount_percentage_based_on_range(state, tonnage, total_amount, discoun
     tonnage = flt(tonnage) or 0
     total_amount = flt(total_amount) or 0
     discount_percentage = 0
+    log.debug("tonnage = " + str(tonnage) + " -- total_amount = " + str(total_amount))
+    log.debug("discount_based_on = " + str(discount_based_on))
     if discount_based_on == "Weight":
         if state in ["Telangana", "Andhra Pradesh"]:
             if tonnage <= 11.5:
